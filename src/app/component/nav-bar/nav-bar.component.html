@@ -1,6 +1,6 @@
 <!--Tool bar with Equifax Logo and Menu button if display (width < 800px) == true -->
-<mat-toolbar class="toolbar">
-   <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+<mat-toolbar color="primary">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
        <mat-icon *ngIf="!sidenav.opened">
            menu
        </mat-icon>
@@ -8,69 +8,69 @@
            close
        </mat-icon>
    </button>
-   <img src="/assets/equifax-logo-black-and-white-1.png" />
+    <img src="/assets/equifax-logo-black-and-white-1.png" />
 </mat-toolbar>
 
 
 <!--Main container-->
 <mat-sidenav-container>
-   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
 
-       <!--when logged int-->
-       <div *ngIf="userService.checkLoggedIn()">
-           <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
-           <h4 class="name">{{userService.getUserFirstName()}}</h4>
-           <p class="designation">Software Engineer</p>
-           <mat-divider></mat-divider>
-       </div>
+        <!--when logged int-->
+        <div *ngIf="userService.checkLoggedIn()">
+            <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+            <h4 class="name">{{userService.getUserFirstName()}}</h4>
+            <p class="designation">Software Engineer</p>
+            <mat-divider></mat-divider>
+        </div>
 
 
-       <!--when logged out-->
-       <div *ngIf="!userService.checkLoggedIn()">
-           <a mat-button class="menu-button" routerLink="/login">
-               <mat-icon>login</mat-icon>
-               <span>Login</span>
-           </a>
-       </div>
-     <button mat-button class="menu-button">
+        <!--when logged out-->
+        <div *ngIf="!userService.checkLoggedIn()">
+            <a mat-button class="menu-button" routerLink="/login">
+                <mat-icon>login</mat-icon>
+                <span>Login</span>
+            </a>
+        </div>
+        <button mat-button class="menu-button">
            <mat-icon>help</mat-icon>
            <span>Help</span>
        </button>
- 
-       <!--Logout button at the bottom-->
-       <button *ngIf="userService.checkLoggedIn()" mat-button class="menu-button" (click)="userService.logoutUser()">
+
+        <!--Logout button at the bottom-->
+        <button *ngIf="userService.checkLoggedIn()" mat-button class="menu-button" (click)="userService.logoutUser()">
            <mat-icon>logout</mat-icon>
            <span>Logout</span>
        </button>
-       <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
 
-       <!-- still to figure out what should be included in this area -->
-       <!-- updated this to have the links that equifax has on their website-->
-       <a mat-button class="menu-button" href="https://developer.equifax.com/products">
-           <mat-icon>cloud_queue</mat-icon>
-           <span>API Products</span>
-       </a>
-       <a mat-button class="menu-button" href="https://developer.equifax.com/documentation">
-           <mat-icon>library_books</mat-icon>
-           <span>Documentation</span>
-       </a>
-       <a mat-button class="menu-button" href="https://igneous-effort-326814-equifactsdeveloperportal.apigee.io/my-apps/new-app">
-        <mat-icon>library_books</mat-icon>
-        <span>Create a new app</span>
-    </a>
-       <a mat-button class="menu-button" href="https://developer.equifax.com/contact">
-         <mat-icon>message</mat-icon>
-         <span>Contact Us</span>
-     </a>
-   </mat-sidenav>
+        <!-- still to figure out what should be included in this area -->
+        <!-- updated this to have the links that equifax has on their website-->
+        <a mat-button class="menu-button" href="https://developer.equifax.com/products">
+            <mat-icon>cloud_queue</mat-icon>
+            <span>API Products</span>
+        </a>
+        <a mat-button class="menu-button" href="https://developer.equifax.com/documentation">
+            <mat-icon>library_books</mat-icon>
+            <span>Documentation</span>
+        </a>
+        <a mat-button class="menu-button" href="https://igneous-effort-326814-equifactsdeveloperportal.apigee.io/my-apps/new-app">
+            <mat-icon>library_books</mat-icon>
+            <span>Create a new app</span>
+        </a>
+        <a mat-button class="menu-button" href="https://developer.equifax.com/contact">
+            <mat-icon>message</mat-icon>
+            <span>Contact Us</span>
+        </a>
+    </mat-sidenav>
 
-   <!--main content/ current state of the application/ <router-outlet>-->
-   <mat-sidenav-content>
-       <div class="content">
-           <ng-content></ng-content>
-       </div>
-   </mat-sidenav-content>
+    <!--main content/ current state of the application/ <router-outlet>-->
+    <mat-sidenav-content>
+        <div class="content">
+            <ng-content></ng-content>
+        </div>
+    </mat-sidenav-content>
 
 </mat-sidenav-container>

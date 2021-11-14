@@ -1,11 +1,9 @@
 mat-toolbar {
-    background: #e4e4e4;
-    color: white;
-    height: 50px;
+    height: 75px;
 }
 
 img {
-    width: 100px;
+    width: 150px;
     object-fit: contain;
 }
 
@@ -65,10 +63,11 @@ mat-divider {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.mat-toolbar {
+
+/*.mat-toolbar {
     background: #ffffff;
     color: #181616;
-}
+}*/
 
 span {
     font-family: 'Crete Round', serif;
