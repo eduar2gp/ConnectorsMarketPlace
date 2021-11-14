@@ -1,0 +1,22 @@
+<div>
+    <div class="custom-field">
+        <!-- searchText is a string property in productlist ts-->
+       <input id= "name" type="search" class="search-field" [(ngModel)]="searchText" placeholder="Search Products" />
+       <button type="submit" class="search-button">
+       <img src="assets/search.png">
+       </button>
+    </div>
+ </div>
+ <br>
+   <!-- added "searchpipe" to sarch  by  the "name" property of products-->
+ <div class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="25px grid">
+    <div class="child" fxFlex= "30%" *ngFor="let product of products | searchpipe : searchText : 'name'">
+       <div class= "card">
+         <div>{{product.productName}}</div>
+         <div>{{product.stars}}</div>
+       </div>
+       <mat-card>
+         
+       </mat-card>
+    </div>
+</div>

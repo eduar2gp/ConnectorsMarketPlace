@@ -1,0 +1,13 @@
+<h1>Benefits</h1>
+<div>
+    <p>{{benefits.overView}}</p>
+</div>
+<div class="grid" *ngFor="let benefit of benefits.benefits; let i = index">
+    <div class="flex toRight" [ngClass]="{'toLeft': i % 2}">
+        <img src="{{benefit.benefitLogoUrl}}" alt="Benefit Logo" />
+        <div class="description">
+            <p><strong>{{benefit.benefitTitle}}</strong></p>
+            <p>{{benefit.benefitDescription}}</p>
+        </div>
+    </div>
+</div>

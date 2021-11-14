@@ -1,0 +1,11 @@
+<h1> Key Features </h1>
+<div class="grid" *ngFor="let feature of features">
+    <div class="flex">
+        <div class="flex icon">
+            <span class="material-icons">
+                done_outline
+            </span>
+        </div>
+        <p>{{feature.featureDescription}}</p>
+    </div>
+</div>

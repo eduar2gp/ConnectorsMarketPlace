@@ -1,0 +1,17 @@
+<h2>Login</h2>
+
+<form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <div *ngIf="loginFailed">
+        <p style="color: red">Invalid email or password</p>
+    </div>
+
+    <button mat-raised-button color="primary">Submit</button>
+</form>

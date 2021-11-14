@@ -1,0 +1,25 @@
+<h2>Reviews</h2>
+
+<!-- Create review form -->
+<form [formGroup]="reviewForm" (ngSubmit)="onReviewSubmit()">
+
+    <!-- Stars -->
+    <div id="starContainer">
+        <mat-icon (mousemove)="onStarMouseMove(starIndex, $event)" 
+        (mouseout)="onStarMouseOut()"
+        (click)="onStarClick(starIndex, $event)"
+        *ngFor="let starIndex of starArray">star_outline</mat-icon>
+    </div>
+
+    <!-- Text field -->
+    <mat-form-field appearance="fill" aria-placeholder="test?">
+        <mat-label>IDK</mat-label>
+        <textarea matInput formControlName="reviewText"></textarea>
+    </mat-form-field>
+
+    <!-- Submit button -->
+    <button mat-button>Submit Review</button>
+</form>
+
+<!-- Reviews -->
+<app-review *ngFor="let review of reviews" [review]="review"></app-review>

@@ -1,0 +1,18 @@
+<h1>Use Cases</h1>
+<div class="grid">
+    <div *ngFor="let useCase of useCases">
+        <div><strong><p>{{useCase.useCaseName}}</p></strong></div>
+        <div class="grid">
+            <div *ngFor="let description of useCase.useCaseDetails" class="flex">
+                <div class="flex icon">
+                    <span class="material-icons">
+                        done
+                    </span>
+                </div>
+                <div class="description">
+                    <p>{{description.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

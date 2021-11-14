@@ -1,0 +1,28 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 5px;
+}
+
+.flex {
+    display: flex;
+}
+
+.icon {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.description {
+    flex: 5;
+}
+
+p {
+    font-family: 'Zen Kurenaido', sans-serif;
+}
+
+h1 {
+    font-family: 'Crete Round', serif;
+}
