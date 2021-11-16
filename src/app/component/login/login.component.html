@@ -1,17 +1,29 @@
-<h2>Login</h2>
+<div class="main">
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h2>Log In</h2>
+                <mat-error *ngIf="loginFailed">
+                    Invalid email or password
+                </mat-error>
 
-<form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-field" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email">
-    </mat-form-field>
-    <mat-form-field class="form-field" appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
-    </mat-form-field>
-    <div *ngIf="loginFailed">
-        <p style="color: red">Invalid email or password</p>
-    </div>
+                <mat-form-field appearance="fill">
+                    <input id="emailInput" type="email" matInput placeholder="Email" formControlName="email" required>
+                    <mat-error>
+                        Please provide a valid email address
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <input id="passwordInput" matInput [type]="hidePass ? 'password' : 'text'" placeholder="Password" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                    <mat-error>
+                        Please enter a password
+                    </mat-error>
+                </mat-form-field>
 
-    <button mat-raised-button color="primary">Submit</button>
-</form>
+                <button id="loginButton" mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

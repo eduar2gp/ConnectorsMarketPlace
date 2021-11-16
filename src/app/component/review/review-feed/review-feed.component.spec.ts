@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ReviewFeedComponent } from './review-feed.component';
 
@@ -8,7 +9,8 @@ describe('ReviewFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReviewFeedComponent ]
+      declarations: [ ReviewFeedComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   });

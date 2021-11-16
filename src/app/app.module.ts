@@ -65,7 +65,8 @@ import { ProductDetailComponent } from './component/product-detail/product-detai
 import { ReviewComponent } from './component/review/review/review.component';
 import { DatePipe } from '@angular/common';
 import { SearchpipePipe } from './searchpipe.pipe';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
     ReviewDetailComponent,
     LoginComponent,
     ReviewFeedComponent,
-    ProductDetailComponent
+    ProductDetailComponent,    
   ],
   imports: [
     BrowserModule,    
@@ -127,7 +128,8 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
     AppRoutingModule,
     FlexLayoutModule,
     OverlayModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    HttpClientModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

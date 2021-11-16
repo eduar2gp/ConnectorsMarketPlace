@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { USERS } from '../model/mock-users';
+import { USERS } from '../database/mock-users';
 import { IUser } from '../model/user';
 
 @Injectable({

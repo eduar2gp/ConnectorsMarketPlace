@@ -1,6 +1,6 @@
 <!--Tool bar with Equifax Logo and Menu button if display (width < 800px) == true -->
-<mat-toolbar color="primary">
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+<mat-toolbar>
+    <button id="sideNavButtons" mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
        <mat-icon *ngIf="!sidenav.opened">
            menu
        </mat-icon>
@@ -8,9 +8,24 @@
            close
        </mat-icon>
    </button>
-    <img src="/assets/equifax-logo-black-and-white-1.png" />
-</mat-toolbar>
+    <a mat-button class="menu-button" href="https://developer.equifax.com/products">
+        <img src="/assets/equifax-logo-1.png" />
+    </a>
 
+    <!-- <div fxFlex fxLayoutAlign="flex-end center">
+    <button mat-icon-button [matMenuTriggerFor]="menu" 
+    #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">
+    <mat-icon>home</mat-icon>
+</button>
+ </div> -->
+</mat-toolbar>
+<!-- <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <div (mouseleave)="menuTrigger.closeMenu()">
+
+      <button>hey</button>
+   
+    </div>
+</mat-menu> -->
 
 <!--Main container-->
 <mat-sidenav-container>
@@ -48,7 +63,7 @@
 
         <!-- still to figure out what should be included in this area -->
         <!-- updated this to have the links that equifax has on their website-->
-        <a mat-button class="menu-button" href="https://developer.equifax.com/products">
+        <a mat-button class="menu-button" routerLink="/">
             <mat-icon>cloud_queue</mat-icon>
             <span>API Products</span>
         </a>

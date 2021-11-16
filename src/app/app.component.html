@@ -1,3 +1,6 @@
-<app-nav-bar>
-    <router-outlet></router-outlet>
-</app-nav-bar>
+<div *ngIf="isloggedIn()" class="page" class="flex-container">
+    <app-nav-bar>
+        <router-outlet></router-outlet>
+    </app-nav-bar>
+</div>
+<app-login *ngIf="!isloggedIn()"></app-login>

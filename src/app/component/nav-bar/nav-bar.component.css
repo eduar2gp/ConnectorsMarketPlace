@@ -1,9 +1,14 @@
 mat-toolbar {
-    height: 75px;
+    /*background: #FEDBD0;*/
+    /*background-color: #4A6572;*/
+    background-color: rgb(48, 34, 34);
+    height: 50px;
+    color: white;
+    height: 50px;
 }
 
 img {
-    width: 150px;
+    width: 100px;
     object-fit: contain;
 }
 
@@ -11,8 +16,11 @@ mat-sidenav {
     margin: 16px;
     width: 220px;
     border-right: none;
-    background: #ffffff;
-    color: rgb(26, 25, 43);
+    /*background-color: #4A6572;*/
+    /*background-color: #4d393a;*/
+    /*background-color: #583b3e;*/
+    background-color: rgb(43, 37, 37);
+    /*color: rgb(6, 5, 26);*/
     border-radius: 10px;
     padding: 16px;
     text-align: center;
@@ -63,18 +71,22 @@ mat-divider {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-
-/*.mat-toolbar {
-    background: #ffffff;
-    color: #181616;
-}*/
+mat-icon {
+    color: white;
+}
 
 span {
     font-family: 'Crete Round', serif;
+    /*font-family: 'Zen Kurenaido', sans-serif;*/
+    font-size: small;
+    font-style: normal;
+    font-weight: lighter;
+    color: rgb(212, 212, 212);
 }
 
 h4 {
     font-family: 'Crete Round', serif;
+    color: rgb(173, 167, 167);
 }
 
 p {

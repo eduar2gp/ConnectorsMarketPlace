@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs/internal/observable/of';
+import { Observable, of } from 'rxjs';
 //importing the model and mock database
 import { IProduct } from '../model/product';
 import { PRODUCTS } from '../database/products';
@@ -18,4 +17,6 @@ export class ProductService {
     const products = of(PRODUCTS);
     return products;
   }
+
+ 
 }

@@ -5,20 +5,18 @@
 
     <!-- Stars -->
     <div id="starContainer">
-        <mat-icon (mousemove)="onStarMouseMove(starIndex, $event)" 
-        (mouseout)="onStarMouseOut()"
-        (click)="onStarClick(starIndex, $event)"
-        *ngFor="let starIndex of starArray">star_outline</mat-icon>
+        <mat-icon *ngFor="let starIndex of starArray" (mousemove)="onStarMouseMove(starIndex, $event)"
+            (mouseout)="onStarMouseOut()" (click)="onStarClick(starIndex, $event)" class="stars">star_outline</mat-icon>
     </div>
 
     <!-- Text field -->
     <mat-form-field appearance="fill" aria-placeholder="test?">
-        <mat-label>IDK</mat-label>
+        <mat-label>Leave your own review...</mat-label>
         <textarea matInput formControlName="reviewText"></textarea>
     </mat-form-field>
 
     <!-- Submit button -->
-    <button mat-button>Submit Review</button>
+    <button mat-button [disabled]="!reviewForm.valid">{{!hasAlreadyReviewed ? 'Submit Review' : 'Update Review'}}</button>
 </form>
 
 <!-- Reviews -->

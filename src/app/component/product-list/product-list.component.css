@@ -28,3 +28,11 @@
     height: 14px;
     object-fit: cover;
   }
+
+  .custom-field {
+    width: 100%
+  }
+
+  a {
+    color: black
+  }

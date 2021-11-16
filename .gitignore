@@ -1,46 +1,26 @@
-# Package Files #
-*.jar
-*.war
-*.ear
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-### NPM ###
-node_modules/
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
 
-### Gradle ###
-.gradle
+# dependencies
+/node_modules
 
+# profiling files
+chrome-profiler-events*.json
 
-### Maven ###
-target/
-log/
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-#.classpath #intending to let people import projects a bit easier
-.factorypath
-#.project #intending to let people import projects a bit easier
-.settings
-.springBeans
-Servers/
-.recommenders/
-.metadata/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*
@@ -48,10 +28,17 @@ nbdist/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 
-# e2e
-/e2e/*.js
-/e2e/*.map
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
 # System Files
 .DS_Store

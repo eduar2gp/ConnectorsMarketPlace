@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'feature', component: FeatureComponent },
   { path: 'login', component: LoginComponent},
   { path: 'reviews', component: ReviewFeedComponent},
-  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'product-detail/:productId', component: ProductDetailComponent },  
 ];
 
 @NgModule({

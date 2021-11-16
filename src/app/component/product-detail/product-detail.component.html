@@ -1,3 +1,7 @@
+
+<div *ngIf="product">
+    <h1>{{product.productName}}</h1>
+
 <div class="flex">
     <div class="box-2">
 
@@ -5,12 +9,14 @@
         </youtube-player>
 
         <app-benefit></app-benefit>
-
-        <app-review-feed></app-review-feed>
+        
+        <app-review-feed [parentProductId]="convertIdString()"></app-review-feed>
 
     </div>
     <div class="box-1">
         <app-use-case></app-use-case>
         <app-feature></app-feature>
     </div>
+</div>
+
 </div>

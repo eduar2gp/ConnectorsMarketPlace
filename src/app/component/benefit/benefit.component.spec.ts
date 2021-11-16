@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { BenefitComponent } from './benefit.component';
 
@@ -8,7 +9,9 @@ describe('BenefitComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BenefitComponent ]
+      declarations: [ BenefitComponent ],
+      providers: [ { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }]
+
     })
     .compileComponents();
   });

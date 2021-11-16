@@ -1,8 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
+/**
+ * Here, the user can submit their information to log in.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,22 +17,22 @@ export class LoginComponent implements OnInit {
   loginFailed: boolean = false;
 
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.minLength(3), Validators.email]),
+    password: new FormControl('', [Validators.required])
   });
 
-  constructor(private userService: UserService, private router: Router) { }
+  hidePass: boolean = true;
+
+  constructor(private userService: UserService, private router: Router, private myHttp: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   /**
-   * Called when the login form is submitted. 
-   * Attempts to log the user in.
+   * Attempts to log the user in with submitted information.
    */
   onSubmit() {
     // Send our information to the "server" and attempt to log in
-    console.log("submited", this.loginForm.get("email")?.value, this.loginForm.get("password")?.value);
     this.userService.loginUser(
       this.loginForm.get("email")?.value,
       this.loginForm.get("password")?.value).subscribe(
@@ -42,4 +46,5 @@ export class LoginComponent implements OnInit {
         }
       );
   }
+
 }
