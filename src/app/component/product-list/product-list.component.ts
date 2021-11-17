@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, Renderer2 } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { IProduct } from 'src/app/model/product';
 
 import { ProductService } from 'src/app/service/product.service';
@@ -11,16 +13,26 @@ import { ReviewService } from 'src/app/service/review.service';
 })
 export class ProductListComponent implements OnInit {
 
-
-
   searchText: string ="";
 
   products: IProduct[] = [];
+  productsSorted: IProduct[] = [];
 
   // Used for review star *ngFors
   starIndexArray: number[] = [1, 2, 3, 4, 5];
 
-  constructor(private ProductService: ProductService, private reviewService: ReviewService) { }
+  // Hover timer vars
+  elevationMaxValue: number = 10;
+  elevationMinValue: number = 2;
+  elevationTimerMaxTicks: number = 30;
+  elevationRate: number = 7.5;
+  hoverTarget: HTMLElement | null = null;
+
+  constructor(
+    private ProductService: ProductService, 
+    private reviewService: ReviewService,
+    private renderer: Renderer2) 
+    { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -29,7 +41,7 @@ export class ProductListComponent implements OnInit {
   getProducts(): void {
     this.ProductService.getProducts().subscribe(
       products => {
-        this.products = products;
+        this.products = Array.from(products);
         this.getReviewScore();
 
       });
@@ -42,7 +54,7 @@ export class ProductListComponent implements OnInit {
     // Get reviews
     this.reviewService.getAllReviews().subscribe(
       (reviewsForAllProducts) => {
-        // For each product's review (skip review[0], that is for testing)
+        // For each product's reviews (skip review[0], that is for testing)
         for (let i = 1; i < reviewsForAllProducts.length; i++) {
           let reviewsForOneProduct = reviewsForAllProducts[i];
 
@@ -58,7 +70,8 @@ export class ProductListComponent implements OnInit {
         }
 
         // Sort products by reviews
-        this.products.sort((a, b) => (a.stars > b.stars) ? -1 : 1);
+        this.productsSorted = this.products;
+        this.productsSorted.sort((a, b) => (a.stars > b.stars) ? -1 : 1);
       }
     );
   }
@@ -88,5 +101,55 @@ export class ProductListComponent implements OnInit {
     // Stars beyond rating are empty
     else
       return 'star_outline'
+  }
+
+  /**
+   * Starts a timer to gradually elevate the target in response to mouse.
+   * @param event The mouse event
+   */
+  hoverOn(event: MouseEvent) {
+    if (!this.hoverTarget) {
+      this.hoverTarget = event.target as HTMLElement;
+
+      const eTimer = timer(0,this.elevationRate);
+      let eTimerRun = eTimer.subscribe(val => {
+        
+        let interpolatedTime = this.elevationMaxValue * (val / this.elevationTimerMaxTicks);
+        interpolatedTime = Math.floor(interpolatedTime);
+
+        if (this.hoverTarget) {
+          // Remove elevation classes
+          let classesToRemove = Array.from(this.hoverTarget!.classList).filter(c => c.startsWith('mat-elevation-z'));
+          classesToRemove.forEach((c) => {
+              this.renderer.removeClass(this.hoverTarget, c);
+            }
+          );
+          // Add new elevation class
+          this.renderer.addClass(this.hoverTarget, `mat-elevation-z${Math.floor(interpolatedTime)+this.elevationMinValue}`);
+        }
+
+        if (val >= this.elevationTimerMaxTicks)
+          eTimerRun.unsubscribe();
+      });
+
+    }
+  }
+
+  /**
+   * Resets any elevation that happened while target was moused over.
+   * @param event The mouse event
+   */
+  hoverOff(event: MouseEvent) {
+    this.hoverTarget = event.target as HTMLElement;
+
+    // Remove elevation classes
+    let classesToRemove = Array.from(this.hoverTarget!.classList).filter(c => c.startsWith('mat-elevation-z'));
+    classesToRemove.forEach((c) => {
+      this.renderer.removeClass(this.hoverTarget, c);
+    }
+    );
+    this.renderer.addClass(this.hoverTarget, `mat-elevation-z${this.elevationMinValue}`);
+
+    this.hoverTarget = null;
   }
 }

@@ -21,12 +21,13 @@
   <div
     class="child"
     fxFlex="30%"
-    *ngFor="let product of products | searchpipe: searchText:'productName'"
+    *ngFor="let product of productsSorted | searchpipe: searchText:'productName'; index as pIndex"
   >
-    <a [routerLink]="['product-detail/', product.productId]">
-      <div class="card">
+    <a [routerLink]="['product-detail/', product.productId]" style="text-decoration: none;">
+      <div class="card" (mouseenter)="hoverOn($event)" (mouseleave)="hoverOff($event)">
         <mat-card>
-          <strong>{{ product.productName }}</strong>
+          <mat-card-title>{{ product.productName }}</mat-card-title>
+          <mat-card-subtitle>{{ product.productDescription }}</mat-card-subtitle>
           <br />
           <img src="{{ product.logoUrl }}" />
           <br/>

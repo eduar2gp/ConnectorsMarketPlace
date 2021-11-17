@@ -1,20 +1,21 @@
-.card {
+/* .card {
     border-style: solid;
     border-width: 1px;
     height: 200px;
     border-radius: 10px;
     padding: 20px;
     border-spacing: 10px;
-}
-.card:hover{
+
+} */
+/* .card:hover{
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     height: 200px;
     border-radius: 10px;
     padding: 20px;
     border-spacing: 10px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-}
+} */
 
 .search-field {
     width: 275px;

@@ -1,3 +1,13 @@
 .stars {
     color: orange
 }
+
+.card {
+    border-style: solid;
+    border-width: 2px;
+    height: 200px;
+    border-radius: 30px;
+    padding: 20px;
+    border-spacing: 10px;
+    box-shadow: 5px 10px;
+}

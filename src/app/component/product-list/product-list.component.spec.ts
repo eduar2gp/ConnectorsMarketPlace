@@ -3,6 +3,11 @@ import { SearchpipePipe } from 'src/app/searchpipe.pipe';
 import { ProductService } from 'src/app/service/product.service';
 import { ProductListComponent } from './product-list.component';
 import { IProduct } from 'src/app/model/product';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { ReviewService } from 'src/app/service/review.service';
+import { of } from 'rxjs';
+import { Renderer2 } from '@angular/core';
 
 
 describe('ProductListComponent', () => {
@@ -12,9 +17,23 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     
+    let productServiceSpy = jasmine.createSpyObj('ProductService', ['getProducts']);
+    productServiceSpy.getProducts.and.returnValue(of([]));
+
+    let reviewServiceSpy = jasmine.createSpyObj('ReviewService', ['getAllReviews']);
+    reviewServiceSpy.getAllReviews.and.returnValue(of([]));
+
     await TestBed.configureTestingModule({
       declarations: [ ProductListComponent, SearchpipePipe ],
- 
+      imports: [
+        MatCardModule,
+        MatIconModule,
+      ],
+      providers: [
+        {provide: ProductService, useValue: productServiceSpy},
+        {provide: ReviewService, useValue: reviewServiceSpy},
+        Renderer2,
+      ],
      
     })
     .compileComponents();

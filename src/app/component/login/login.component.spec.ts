@@ -1,8 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ElementRef } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { getMatIconFailedToSanitizeUrlError } from '@angular/material/icon';
+
 
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule} from '@angular/router/testing';
@@ -13,7 +12,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let el: HTMLElement;
-  let loginSpy;
+
   
   
   function updateForm(userEmail: any, userPassword: any) {
@@ -62,7 +61,7 @@ describe('LoginComponent', () => {
   });
 
 
-  it('Form should be invalid', fakeAsync(()=> {
+  it('Form itself should be invalid', fakeAsync(()=> {
     component.loginForm.controls['email'].setValue('');
     component.loginForm.controls['password'].setValue('');
     expect(component.loginForm.valid).toBeFalsy();
@@ -70,37 +69,30 @@ describe('LoginComponent', () => {
 
 
 
-  it('Form should be valid', fakeAsync(()=> {
+  it('Form should be valid with mock user', fakeAsync(()=> {
     component.loginForm.controls['email'].setValue('test@gmail.com');
     component.loginForm.controls['password'].setValue('P4ss');
     expect(component.loginForm.valid).toBeTruthy();
   }));
 
 
-  it('update loginFailed after input ', fakeAsync(() => {
-    updateForm("test@gmail.com", "P4ss");
-    fixture.detectChanges();
-    const button = fixture.debugElement.nativeElement.querySelector('#loginButton');
-    button.click();
-    fixture.detectChanges();   
-    expect(component.loginFailed).toBeFalsy();
-  }));
-
-
-//this test does nothing, obviously.  Need to fix.
-  it('should not show error message when input is valid', fakeAsync (() => {
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    const messages = compiled.querySelector('#message');
-    expect(messages).toBeFalsy();
- }));
-
-
-
  it('should show error messages when input is invalid', fakeAsync (() => {
+  updateForm("notArealEmail.com", "notArealPassword");
+  fixture.detectChanges();
+  const button = fixture.debugElement.nativeElement.querySelector('#loginButton');
+  button.click();
+  fixture.detectChanges();   
     expect(fixture.debugElement.query(By.css('mat-error'))).toBeTruthy();
 
 }));
 
 
+  it('update loginFailed after incorrect input ', fakeAsync(() => {
+    updateForm("test@gmail.com", "notARealPassword");
+    fixture.detectChanges();
+    const button = fixture.debugElement.nativeElement.querySelector('#loginButton');
+    button.click();
+    fixture.detectChanges();   
+    expect(component.loginFailed).toBeTruthy();
+  }));
 });

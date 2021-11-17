@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { IReview } from 'src/app/model/review';
@@ -33,7 +33,7 @@ export class ReviewFeedComponent implements OnInit, AfterViewInit {
   /** Has this user already made a review? */
   hasAlreadyReviewed: boolean = false;
 
-  constructor(private reviewService: ReviewService) { }
+  constructor(private reviewService: ReviewService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.getReviews();
