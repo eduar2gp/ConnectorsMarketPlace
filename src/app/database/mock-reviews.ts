@@ -65,14 +65,14 @@ export const REVIEWS: IReview[][] = [
       {
         id: 0,
         authorId: 5,
-        stars: 3.5,
+        stars: 3,
         text: "Donec metus nisi, tincidunt ut tempus ut, tincidunt ut lacus.",
         submitted: randomDate()
       },
       {
         id: 1,
         authorId: 7,
-        stars: 2,
+        stars: 4.5,
         text: "Pellentesque dui ex, facilisis sed maximus at, elementum ut tellus.",
         submitted: randomDate()
       },

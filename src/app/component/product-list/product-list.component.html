@@ -1,23 +1,42 @@
- <div  class="flex-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="25px grid">
-   
-   <div class="custom-field">
-      <!-- searchText is a string property in productlist ts-->
-     <input id= "name" type="search" class="search-field" [(ngModel)]="searchText" placeholder="Search Products" />
-     <button type="submit" class="search-button">
-     <img src="assets/search.png">
-     </button>
+<div
+  class="flex-container"
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutGap="25px grid"
+>
+  <div class="custom-field">
+    <!-- searchText is a string property in productlist ts-->
+    <input
+      id="name"
+      type="search"
+      class="search-field"
+      [(ngModel)]="searchText"
+      placeholder="Search Products"
+    />
+    <button type="submit" class="search-button">
+      <img src="assets/search.png" />
+    </button>
   </div>
-      <!-- added "searchpipe" to search  by  the "productName" property of products-->
-    <div class="child" fxFlex= "30%" *ngFor="let product of products | searchpipe : searchText : 'productName'">
-       <a [routerLink]="['product-detail/', product.productId]">
-       <div class= "card">
+  <!-- added "searchpipe" to search  by  the "productName" property of products-->
+  <div
+    class="child"
+    fxFlex="30%"
+    *ngFor="let product of products | searchpipe: searchText:'productName'"
+  >
+    <a [routerLink]="['product-detail/', product.productId]">
+      <div class="card">
         <mat-card>
-        {{product.productName}}<br>
-        {{product.stars}}
-       </mat-card>
-       </div>
-       </a>
-    </div>
-    
+          <strong>{{ product.productName }}</strong>
+          <br />
+          <img src="{{ product.logoUrl }}" />
+          <br/>
+          <mat-icon *ngFor="let starIndex of starIndexArray" class="stars">{{
+            getStarValue(starIndex, product.stars)
+          }}</mat-icon>
 
+
+        </mat-card>
+      </div>
+    </a>
+  </div>
 </div>

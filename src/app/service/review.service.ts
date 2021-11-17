@@ -15,7 +15,7 @@ export class ReviewService {
   /**
    * Retrieves array of reviews for a product from our "database".
    * @param productId API product's id
-   * @returns array of reviews associated with given product
+   * @returns Array of reviews associated with given product
    */
   getReviewsByProductId(productId: number): Observable<IReview[]> {
 
@@ -70,5 +70,12 @@ export class ReviewService {
     return of(review);
   }
 
+    /**
+   * Retrieves reviews for each product in our "database".
+   * @returns Array containing an array of reviews for each product
+   */
+     getAllReviews(): Observable<IReview[][]> {
+      return of(REVIEWS);
+    }
 
 }

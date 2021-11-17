@@ -1,11 +1,19 @@
 .card {
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     height: 200px;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 20px;
     border-spacing: 10px;
-    box-shadow: 5px 10px;
+}
+.card:hover{
+    border-style: solid;
+    border-width: 2px;
+    height: 200px;
+    border-radius: 10px;
+    padding: 20px;
+    border-spacing: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search-field {
@@ -15,14 +23,14 @@
     border-radius: 100px;
     outline: none;
   }
-  
+
   .search-button {
     background: transparent;
     border: none;
     outline: none;
     margin-left: -33px;
   }
-  
+
   .search-button img {
     width: 14px;
     height: 14px;
@@ -35,4 +43,19 @@
 
   a {
     color: black
+  }
+
+  .stars {
+    color: orange
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  mat-card {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }

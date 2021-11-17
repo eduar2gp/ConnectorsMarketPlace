@@ -8,7 +8,7 @@
         <youtube-player class="flex center" videoId="{{videoId}}" suggestedQuality="highres">
         </youtube-player>
 
-        <app-benefit></app-benefit>
+        <app-benefit [product] = "product"></app-benefit>
         
         <app-review-feed [parentProductId]="convertIdString()"></app-review-feed>
 

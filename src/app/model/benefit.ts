@@ -1,5 +1,5 @@
 export interface IBenefit{
-    benefitId: string;
+    benefitId?: string;
     benefitTitle: string;
     benefitDescription: string;
     benefitLogoUrl?: string;    

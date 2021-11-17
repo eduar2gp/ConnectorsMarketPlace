@@ -16,8 +16,9 @@ describe('ReviewComponent', () => {
   let component: ReviewComponent;
   let fixture: ComponentFixture<ReviewComponent>;
 
-  let userService: UserService;
+  let getUserByIdSpy: jasmine.Spy;
 
+  /** Date review was submitted after going through date pipe */
   let expectedDate: string = "15 November, 2021, 12:00 AM";
 
   /** Review that would be injected by host component */
@@ -38,16 +39,14 @@ describe('ReviewComponent', () => {
 
     // Spy user service's getUserById
     const userServiceSpy = jasmine.createSpyObj('UserService', ['getUserById']);
-    let getUserSpy = userServiceSpy.getUserById.and.returnValue(of(expectedAuthor));
-
+    getUserByIdSpy = userServiceSpy.getUserById.and.returnValue(of(expectedAuthor));
+    
     const datePipeSpy = jasmine.createSpyObj('DatePipe', ['transform']);
     datePipeSpy.transform.and.returnValue(expectedDate);
 
     await TestBed.configureTestingModule({
       declarations: [ ReviewComponent ],
       imports: [
-        FormsModule,
-        ReactiveFormsModule,
         MatCardModule,
         MatIconModule,
         RouterModule,
@@ -64,7 +63,7 @@ describe('ReviewComponent', () => {
     fixture = TestBed.createComponent(ReviewComponent);
     component = fixture.componentInstance;
 
-    userService = TestBed.inject(UserService);
+    const userService = TestBed.inject(UserService);
 
     expectedReview = {
       id: 0,
@@ -114,6 +113,7 @@ describe('ReviewComponent', () => {
 
   it('should retreive the review author', () => {
     expect(component.author).toBe(expectedAuthor);
+    expect(getUserByIdSpy.calls.any()).toBeTrue();
   });
 
   it('should convert the submitted date', ()=> {

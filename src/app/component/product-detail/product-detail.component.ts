@@ -12,7 +12,7 @@ import  { ProductService } from '../../service/product.service';
 export class ProductDetailComponent implements OnInit {
 
   videoId = "t_E2_xs6Nns"
-  product: IProduct | undefined;
+  product?: IProduct ;
  
   constructor(private route: ActivatedRoute, private service: ProductService) { }
 

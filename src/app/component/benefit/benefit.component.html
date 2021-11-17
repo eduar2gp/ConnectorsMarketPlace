@@ -1,10 +1,10 @@
 <h1>Benefits</h1>
-<div>
-    <p>{{benefits.overView}}</p>
+<div *ngIf="product">
+    <p>{{product.overview}}</p>
 </div>
-<div class="grid" *ngFor="let benefit of benefits.benefits; let i = index">
+<div  class="grid" *ngFor="let benefit of product?.benefits; let i = index">
     <div class="flex toRight" [ngClass]="{'toLeft': i % 2}">
-        <img src="{{benefit.benefitLogoUrl}}" alt="Benefit Logo" />
+        <img src="{{benefits.benefits[i].benefitLogoUrl}}" alt="Benefit Logo" />
         <div class="description">
             <p><strong>{{benefit.benefitTitle}}</strong></p>
             <p>{{benefit.benefitDescription}}</p>

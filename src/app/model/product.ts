@@ -1,3 +1,6 @@
+import { IBenefit } from "./benefit";
+import { IFeature } from "./feature";
+
 export interface IProduct {
     productId: string;
     productName: string;
@@ -5,4 +8,6 @@ export interface IProduct {
     overview: string;
     stars: number;
     logoUrl: string;
+    benefits: IBenefit [];
+    features: IFeature [];
 }
